@@ -1,7 +1,5 @@
 import winston, { format } from "winston";
 import "winston-daily-rotate-file";
-import path from "path";
-import env from "../config/env";
 
 const { combine, timestamp, printf, colorize, align } = format;
 
@@ -31,47 +29,20 @@ const logFormat = printf((info: winston.Logform.TransformableInfo) => {
 const transports = [];
 
 // Console transport for all environments
-if (env.NODE_ENV !== "test") {
-  transports.push(
-    new winston.transports.Console({
-      format: combine(
-        colorize({ all: true }),
-        timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-        align(),
-        logFormat
-      ),
-      level: env.NODE_ENV === "production" ? "info" : "debug",
-    })
-  );
-}
-
-// File transport for production
-if (env.NODE_ENV === "production") {
-  const fileTransport = new winston.transports.DailyRotateFile({
-    filename: path.join("logs", "application-%DATE%.log"),
-    datePattern: "YYYY-MM-DD",
-    zippedArchive: true,
-    maxSize: "20m",
-    maxFiles: "14d",
+// Always add console transport
+transports.push(
+  new winston.transports.Console({
+    format: combine(
+      colorize({ all: true }),
+      timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+      align(),
+      logFormat
+    ),
     level: "info",
-    format: combine(timestamp(), logFormat),
-  });
+  })
+);
 
-  transports.push(fileTransport);
-
-  // Error file transport
-  const errorFileTransport = new winston.transports.DailyRotateFile({
-    filename: path.join("logs", "error-%DATE%.log"),
-    datePattern: "YYYY-MM-DD",
-    zippedArchive: true,
-    maxSize: "20m",
-    maxFiles: "30d",
-    level: "error",
-    format: combine(timestamp(), logFormat),
-  });
-
-  transports.push(errorFileTransport);
-}
+// File transport disabled (requires NODE_ENV)
 
 // Create the logger instance
 const logger = winston.createLogger({
@@ -87,16 +58,7 @@ const logger = winston.createLogger({
   exitOnError: false, // Don't exit on handled exceptions
 });
 
-// Handle uncaught exceptions
-if (env.NODE_ENV === "production") {
-  logger.exceptions.handle(
-    new winston.transports.File({ filename: "logs/exceptions.log" })
-  );
-
-  process.on("unhandledRejection", (reason) => {
-    throw reason;
-  });
-}
+// Exception handling disabled (requires NODE_ENV)
 
 // Create a stream for Morgan
 const stream = {
