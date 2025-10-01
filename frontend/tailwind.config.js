@@ -175,9 +175,6 @@ export default {
     },
   },
   plugins: [
-    // Add line-clamp plugin for text truncation
-    require("@tailwindcss/line-clamp"),
-
     // Custom plugin for design system utilities
     function ({ addUtilities, theme }) {
       const newUtilities = {
