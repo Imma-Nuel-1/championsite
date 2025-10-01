@@ -1,11 +1,9 @@
 {
   "version": 2,
   "framework": "vite",
-  "installCommand": "cd frontend && npm install --no-audit --no-fund",
-  "buildCommand": "cd frontend && npm run build",
+  "installCommand": "npm install --no-audit --no-fund",
+  "buildCommand": "npm run build",
   "devCommand": "cd frontend && npm run dev",
-  "outputDirectory": "frontend/dist",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
