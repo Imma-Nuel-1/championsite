@@ -379,7 +379,9 @@ const AdminTestimonials: React.FC = () => {
           break;
       }
 
-      const response = await apiFetch(url, { method });
+      const response = (await apiFetch(url, { method })) as {
+        success: boolean;
+      };
 
       if (response.success) {
         // Refresh the testimonials list

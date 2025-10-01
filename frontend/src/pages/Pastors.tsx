@@ -50,18 +50,18 @@ const pastors = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
+// const cardVariants = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: (i: number) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       delay: i * 0.2,
+//       duration: 0.6,
+//       ease: "easeOut",
+//     },
+//   }),
+// };
 
 const Pastors = () => {
   return (
@@ -94,12 +94,10 @@ const Pastors = () => {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-1 gap-12 max-w-4xl mx-auto">
-            {pastors.map((pastor, index) => (
+            {pastors.map((pastor) => (
               <div
                 key={pastor.id}
                 className="bg-white rounded-2xl shadow-xl overflow-hidden"
-                me="motion-safe:animate-fadeIn"
-                custom={index}
               >
                 <div className="grid md:grid-cols-2 gap-8 p-8">
                   <div className="text-center md:text-left">

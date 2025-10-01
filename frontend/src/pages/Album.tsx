@@ -22,7 +22,7 @@ const Album = () => {
       if (!id) return;
       setLoading(true);
       try {
-        const res = await apiFetch(`/api/gallery/${id}`);
+        const res = (await apiFetch(`/api/gallery/${id}`)) as { data: any };
         setAlbum(res.data);
       } catch (err) {
         setError("Failed to load album");
@@ -270,4 +270,3 @@ const Album = () => {
 };
 
 export default Album;
-

@@ -96,8 +96,7 @@ const ImageContainer = () => {
 
       const baseTransition = {
         duration: 0.9,
-        ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smoother transitions
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
       };

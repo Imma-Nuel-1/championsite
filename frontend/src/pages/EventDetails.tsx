@@ -34,7 +34,7 @@ const EventDetails = () => {
 
       setLoading(true);
       try {
-        const data = await apiFetch(`/api/events/${id}`);
+        const data = (await apiFetch(`/api/events/${id}`)) as { event: any };
         setEvent(data.event);
       } catch (err) {
         setError("Failed to load event details.");
@@ -328,4 +328,3 @@ const EventDetails = () => {
 };
 
 export default EventDetails;
-

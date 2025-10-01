@@ -23,7 +23,10 @@ const Gallery = () => {
     const fetchItems = async () => {
       setLoading(true);
       try {
-        const data = await apiFetch(`/api/gallery?page=${page}`);
+        const data = (await apiFetch(`/api/gallery?page=${page}`)) as {
+          data: any[];
+          totalPages?: number;
+        };
         setItems(data.data);
         setTotalPages(data.totalPages || 1);
       } catch (err) {

@@ -1,7 +1,6 @@
 ﻿import { useState } from "react";
 import { FaPrayingHands, FaHeart, FaUsers, FaClock } from "react-icons/fa";
 import { apiFetch } from "../utils/api";
-import { motion } from "framer-motion";
 
 const PrayerRequest = () => {
   const [formData, setFormData] = useState({

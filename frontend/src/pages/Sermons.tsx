@@ -2,7 +2,6 @@
 import { FaSearch, FaPlay, FaTimes } from "react-icons/fa";
 import { apiFetch } from "../utils/api";
 import { getYouTubeThumbnail, getYouTubeEmbedUrl } from "../utils/youtube";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface Sermon {
   _id: string;
@@ -23,14 +22,14 @@ const Sermons = () => {
   const [selectedSermon, setSelectedSermon] = useState<Sermon | null>(null);
 
   const searchRef = useRef(search);
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const fetchSermons = async (page = 1, term = "") => {
     setLoading(true);
     try {
-      const res = await apiFetch(
+      const res = (await apiFetch(
         `/api/sermons?page=${page}&search=${encodeURIComponent(term)}`
-      );
+      )) as { data: Sermon[]; pagination?: { totalPages: number } };
       setSermons(res.data || []);
       setTotalPages(res.pagination?.totalPages || 1);
       setError(null);
@@ -59,21 +58,22 @@ const Sermons = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  // Unused animation variants - commented out for build
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.6,
+  //       staggerChildren: 0.1,
+  //     },
+  //   },
+  // };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // const itemVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: { opacity: 1, y: 0 },
+  // };
 
   return (
     <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen">
@@ -122,10 +122,7 @@ const Sermons = () => {
           </p>
         ) : (
           <>
-            <div
-              animate="visible"
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            >
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {sermons.map((s) => (
                 <article
                   key={s._id}
