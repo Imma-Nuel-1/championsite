@@ -13,9 +13,9 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-  "noEmit": false,
+    "noEmit": false,
     "allowSyntheticDefaultImports": true,
-    
+
     /* Strict Type-Checking Options */
     "strictNullChecks": true,
     "noImplicitAny": true,
@@ -30,37 +30,25 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    
+
     /* Module Resolution Options */
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types"
-    ],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "types": ["node", "jest"],
-    
+
     /* Source Map Options */
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    
+
     /* Experimental Options */
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "dist",
-    "scripts"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts", "dist", "scripts"]
 }

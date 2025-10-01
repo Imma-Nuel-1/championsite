@@ -1,7 +1,7 @@
 import winston, { format } from "winston";
 import "winston-daily-rotate-file";
 import path from "path";
-// env no longer includes NODE_ENV; default to console logging always
+import env from "../config/env";
 
 const { combine, timestamp, printf, colorize, align } = format;
 
@@ -31,7 +31,7 @@ const logFormat = printf((info: winston.Logform.TransformableInfo) => {
 const transports = [];
 
 // Console transport for all environments
-{
+if (env.NODE_ENV !== "test") {
   transports.push(
     new winston.transports.Console({
       format: combine(
@@ -40,13 +40,13 @@ const transports = [];
         align(),
         logFormat
       ),
-      level: "info",
+      level: env.NODE_ENV === "production" ? "info" : "debug",
     })
   );
 }
 
 // File transport for production
-if (false) {
+if (env.NODE_ENV === "production") {
   const fileTransport = new winston.transports.DailyRotateFile({
     filename: path.join("logs", "application-%DATE%.log"),
     datePattern: "YYYY-MM-DD",
@@ -88,7 +88,7 @@ const logger = winston.createLogger({
 });
 
 // Handle uncaught exceptions
-if (false) {
+if (env.NODE_ENV === "production") {
   logger.exceptions.handle(
     new winston.transports.File({ filename: "logs/exceptions.log" })
   );
