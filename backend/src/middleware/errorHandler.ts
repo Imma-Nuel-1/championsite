@@ -17,7 +17,7 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
   // Log the error
   logger.error(`[${new Date().toISOString()}] ${req.method} ${req.url}`, {
     error: err.message,
-    stack: process.env["NODE_ENV"] === "development" ? err.stack : undefined,
+    stack: err.stack,
     body: req.body,
     params: req.params,
     query: req.query,
@@ -59,10 +59,7 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
     res.status(500).json({
       status: "error",
       statusCode: 500,
-      message:
-        process.env["NODE_ENV"] === "production"
-          ? "Internal Server Error"
-          : err.message,
+      message: "Internal Server Error",
     });
   }
   
