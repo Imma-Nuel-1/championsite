@@ -11,7 +11,6 @@ const connectDB = async (): Promise<void> => {
 
     // Set mongoose options
     const options: mongoose.ConnectOptions = {
-      autoIndex: env.NODE_ENV !== 'production',
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     };

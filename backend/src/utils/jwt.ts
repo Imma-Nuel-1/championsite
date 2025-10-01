@@ -12,10 +12,8 @@ for (const envVar of requiredEnvVars) {
 }
 
 const JWT_SECRET = process.env['JWT_SECRET'] as string;
-const JWT_EXPIRES_IN = process.env['JWT_EXPIRES_IN'] || '7d';
-const JWT_COOKIE_EXPIRES_IN = process.env['JWT_COOKIE_EXPIRES_IN']
-  ? parseInt(process.env['JWT_COOKIE_EXPIRES_IN'], 10)
-  : 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+const JWT_EXPIRES_IN = '7d';
+const JWT_COOKIE_EXPIRES_IN = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 
 // Custom SignOptions that allows expiresIn to be a string or number
 interface CustomSignOptions extends Omit<SignOptions, 'expiresIn' | 'algorithm'> {
@@ -138,7 +136,7 @@ export const createAndSendToken = (
   const cookieOptions = {
     expires: new Date(Date.now() + JWT_COOKIE_EXPIRES_IN),
     httpOnly: true,
-    secure: process.env['NODE_ENV'] === 'production', // Only send over HTTPS in production
+  secure: false,
     sameSite: 'strict' as const,
   };
 

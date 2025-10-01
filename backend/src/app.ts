@@ -3,7 +3,6 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { connectDB } from "./config/db";
-import env from "./config/env";
 import adminRoutes from "./routes/admin";
 import authRoutes from "./routes/auth";
 import { errorHandler } from "./middleware/errorHandler";
@@ -32,7 +31,7 @@ export default class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
 
-    if (env.NODE_ENV !== "test") this.app.use(morgan("dev"));
+  this.app.use(morgan("dev"));
 
     this.app.get("/health", (_req, res) => {
       res.json({ status: "ok", timestamp: new Date().toISOString() });
