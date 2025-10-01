@@ -92,26 +92,26 @@ const Hero = () => (
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <Link
               to="/livestream"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 backdrop-blur-sm group text-lg font-semibold"
+              className="flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 backdrop-blur-sm group text-base sm:text-lg font-semibold w-full sm:w-auto"
             >
-              <FaPlay className="mr-3 group-hover:scale-110 transition-transform duration-300 drop-shadow-sm" />
-              <span className="text-shadow-sm">Watch Live Service</span>
-              <FaArrowRight className="ml-3 group-hover:translate-x-1 transition-transform duration-300 drop-shadow-sm" />
+              <FaPlay className="mr-2 sm:mr-3 text-sm sm:text-base group-hover:scale-110 transition-transform duration-300 drop-shadow-sm flex-shrink-0" />
+              <span className="text-shadow-sm whitespace-nowrap">Watch Live Service</span>
+              <FaArrowRight className="ml-2 sm:ml-3 text-sm sm:text-base group-hover:translate-x-1 transition-transform duration-300 drop-shadow-sm flex-shrink-0" />
             </Link>
 
             <Link
               to="/about"
-              className="btn-secondary btn-lg group backdrop-blur-md bg-white/15 border-white/40 text-white hover:bg-white/25 transition-all duration-500 hover:scale-105"
+              className="flex items-center justify-center btn-secondary btn-lg group backdrop-blur-md bg-white/15 border-white/40 text-white hover:bg-white/25 transition-all duration-500 hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
             >
-              <span className="text-shadow-sm">Learn About Us</span>
-              <FaArrowRight className="ml-3 group-hover:translate-x-1 transition-transform duration-300 drop-shadow-sm" />
+              <span className="text-shadow-sm whitespace-nowrap">Learn About Us</span>
+              <FaArrowRight className="ml-2 sm:ml-3 text-sm sm:text-base group-hover:translate-x-1 transition-transform duration-300 drop-shadow-sm flex-shrink-0" />
             </Link>
           </motion.div>
 
