@@ -22,7 +22,7 @@ const Sermons = () => {
   const [selectedSermon, setSelectedSermon] = useState<Sermon | null>(null);
 
   const searchRef = useRef(search);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchSermons = async (page = 1, term = "") => {
     setLoading(true);
