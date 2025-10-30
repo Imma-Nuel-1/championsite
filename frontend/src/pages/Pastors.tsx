@@ -10,43 +10,40 @@
 const pastors = [
   {
     id: 1,
-    name: "Pastor John Smith",
-    title: "Senior Pastor & Founder",
+    name: "Pastor Gbenga Odunowo",
+    title: "Assistant Pastor In Charge of Province (YP7)",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      "https://res.cloudinary.com/dvr3sk23p/image/upload/v1761841021/Pst_gbenga_gvr39e.jpg",
     bio: "Pastor John founded City of Champions in 2015 with a vision to create a church where people could encounter God's presence and discover their purpose. With over 15 years in ministry, he brings a passionate heart for evangelism and discipleship. He holds a Master of Divinity from Dallas Theological Seminary and has been married to his wife Sarah for 12 years. Together they have three children.",
     specialties: ["Church Planting", "Evangelism", "Leadership Development"],
     education: "M.Div, Dallas Theological Seminary",
     yearsInMinistry: "15+",
     email: "pastor.john@cityofchampions.org",
-    phone: "(555) 123-4567",
   },
   {
     id: 2,
-    name: "Pastor Sarah Smith",
+    name: "Pastor Mrs. Kemi Odunowo",
     title: "Associate Pastor & Women's Ministry Leader",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b98c?w=400&h=400&fit=crop&crop=face",
+      "https://res.cloudinary.com/dvr3sk23p/image/upload/v1761841020/pst_wife_zfkos4.jpg",
     bio: "Pastor Sarah leads our women's ministry and serves as Associate Pastor, bringing a heart for pastoral care and community building. She has a special calling to mentor women and families, helping them grow in their faith journey. She holds a Bachelor's in Biblical Studies and is pursuing her Master's in Christian Counseling.",
     specialties: ["Women's Ministry", "Pastoral Care", "Family Counseling"],
     education:
       "B.A. Biblical Studies, Currently pursuing M.A. Christian Counseling",
     yearsInMinistry: "12+",
     email: "pastor.sarah@cityofchampions.org",
-    phone: "(555) 123-4568",
   },
   {
     id: 3,
-    name: "Pastor Michael Johnson",
-    title: "Youth Pastor",
+    name: "Pastor Adebo Rotimi Samuel",
+    title: "Area Pastor",
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      "https://res.cloudinary.com/dvr3sk23p/image/upload/v1761841020/pst_rotimi_xzzuoj.jpg",
     bio: "Pastor Michael joined our team in 2018 and has been instrumental in building our thriving youth ministry. His energy and passion for reaching the next generation is contagious. He previously served in youth ministry for 8 years before joining City of Champions. He and his wife Lisa have two teenage children.",
     specialties: ["Youth Ministry", "Worship Leading", "Missions"],
     education: "B.A. Youth Ministry, Liberty University",
     yearsInMinistry: "10+",
     email: "pastor.michael@cityofchampions.org",
-    phone: "(555) 123-4569",
   },
 ];
 
@@ -116,15 +113,7 @@ const Pastors = () => {
                           {pastor.email}
                         </a>
                       </div>
-                      <div className="flex items-center justify-center md:justify-start gap-2 text-purple-600">
-                        <FaPhone />
-                        <a
-                          href={`tel:${pastor.phone}`}
-                          className="hover:underline"
-                        >
-                          {pastor.phone}
-                        </a>
-                      </div>
+                      <div className="flex items-center justify-center md:justify-start gap-2 text-purple-600"></div>
                     </div>
                   </div>
 

@@ -72,9 +72,9 @@ const MeetPastor = () => (
             transition={{ duration: 0.4 }}
           >
             <motion.img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
+              src="https://res.cloudinary.com/dvr3sk23p/image/upload/v1761841021/Pst_gbenga_gvr39e.jpg"
               alt="Pastor John Smith"
-              className="w-full h-96 object-cover"
+              className="w-full h-93 object-cover"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6 }}
             />
@@ -108,10 +108,10 @@ const MeetPastor = () => (
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-2 text-shadow-md drop-shadow-lg">
-              Pastor John Smith
+              Pastor Gbenga Odunowo
             </h3>
             <p className="text-lg text-orange-600 dark:text-orange-400 font-semibold mb-4 text-shadow-sm">
-              Senior Pastor & Founder
+              Assistant Pastor In Charge of Province (YP7)
             </p>
           </motion.div>
 
