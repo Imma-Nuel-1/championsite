@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import bcrypt from "bcryptjs";
 import Admin from "../src/models/Admin";
 import readline from "readline";
 
@@ -99,9 +98,10 @@ const updateAdminRole = async () => {
       return;
     }
 
-    admin.role = newRole;
+    const roleValue = newRole === "Admin" || newRole === "SuperAdmin" ? newRole : "Admin";
+    admin.role = roleValue;
     await admin.save();
-    console.log(`✅ Admin role updated to: ${newRole}`);
+    console.log(`✅ Admin role updated to: ${roleValue}`);
   } catch (error) {
     console.error("❌ Error updating admin role:", error);
   }
