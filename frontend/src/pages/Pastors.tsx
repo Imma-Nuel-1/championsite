@@ -1,6 +1,5 @@
 ﻿import {
   FaEnvelope,
-  FaPhone,
   FaGraduationCap,
   FaHeart,
   FaUsers,
