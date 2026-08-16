@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const posts = [
   {
     title: "Faith in Action: Community Outreach Recap",
-    img: "https://images.unsplash.com/photo-1515169273893-b0a8b5964e52?auto=format&fit=crop&w=800&q=70",
+    img: "https://res.cloudinary.com/dvr3sk23p/image/upload/v1752267123/rccg-for-web_kel1nr.png",
     date: "Jun 14, 2024",
     slug: "community-outreach-recap",
   },
