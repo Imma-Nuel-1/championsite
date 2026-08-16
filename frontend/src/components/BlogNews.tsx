@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const posts = [
   {
-    title: "Faith in Action: Community Outreach Recap",
+    title: "Faith: Community Outreach",
     img: "https://res.cloudinary.com/dvr3sk23p/image/upload/v1752267123/rccg-for-web_kel1nr.png",
     date: "Jun 14, 2024",
     slug: "community-outreach-recap",
