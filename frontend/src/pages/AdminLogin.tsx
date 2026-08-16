@@ -6,14 +6,22 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     setError(null);
+    setIsSubmitting(true);
+
     try {
       await login(email, password);
     } catch (err) {
       setError((err as Error).message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -51,23 +59,34 @@ const AdminLogin = () => {
             </div>
             <div>
               <label className="form-label">Password</label>
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-input"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  autoComplete="current-password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="form-input pr-12"
+                  required
+                />
+                <button
+                  type="button"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-3 flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-300 dark:hover:text-white"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
           </div>
           <button
             type="submit"
-            className="bg-gradient-to-r from-blue-500 to-blue-600 text-white w-full py-3 rounded-xl hover:shadow-xl transition-all duration-300 font-semibold mt-6"
+            disabled={isSubmitting}
+            className="bg-gradient-to-r from-blue-500 to-blue-600 text-white w-full py-3 rounded-xl hover:shadow-xl transition-all duration-300 font-semibold mt-6 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:shadow-none"
           >
-            Sign In
+            {isSubmitting ? "Signing In..." : "Sign In"}
           </button>
         </form>
 
