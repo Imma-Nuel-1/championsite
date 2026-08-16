@@ -163,7 +163,7 @@ const Hero = () => (
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <img
-                src="https://res.cloudinary.com/dvr3sk23p/image/upload/v1761843438/out_kjd7yd.jpg"
+                src="https://res.cloudinary.com/dvr3sk23p/image/upload/v1786841987/ChatGPT_Image_Aug_15_2026_08_56_59_PM_ye35bb.png"
                 alt="Church building - A place of worship and community"
                 className="w-full h-[600px] object-cover"
               />
